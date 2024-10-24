@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total Value Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .form-container {
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+        input[type="number"], select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            outline: none;
+        }
+        input[type="number"]:focus, select:focus {
+            border-color: #3498db;
+        }
+        button {
+            padding: 15px 25px;
+            font-size: 18px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 48%;
+            margin-top: 20px;
+            float: left;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .next-button {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Total Insured Value</h1>
+
+<div class="form-container">
+    <form action="/cruising_area" method="POST" oninput="calculateTotalInsuredValue()">
+        <!-- Insurance Type -->
+        <div class="form-group">
+            <label for="insurance_type">Insurance Type</label>
+            <select id="insurance_type" name="insurance_type" required>
+                <option value="">Select Insurance Type</option>
+                <option value="Hull and Third Party Liability">Hull and Third Party Liability</option>
+                <option value="Third Party Liability Only">Third Party Liability Only</option>
+            </select>
+        </div>
+
+        <!-- Currency -->
+        <div class="form-group">
+            <label for="currency">Currency</label>
+            <select id="currency" name="currency" required>
+                <option value="">Select Currency</option>
+                <option value="Pounds">Pounds</option>
+                <option value="Euros">Euros</option>
+            </select>
+        </div>
+
+        <!-- Payment Option -->
+        <div class="form-group">
+            <label for="payment_option">Payment Option</label>
+            <select id="payment_option" name="payment_option" required>
+                <option value="">Select Payment Option</option>
+                <option value="Full Payment">I want to pay in full at start of the policy</option>
+                <option value="Installments">I want to pay in installments</option>
+            </select>
+        </div>
+
+        <!-- Hull and Equipment Value -->
+        <div class="form-group">
+            <label for="hull_value">Hull and Equipment Value (£ or €)</label>
+            <input type="number" id="hull_value" name="hull_value" required>
+        </div>
+
+        <!-- Personal Effects Value -->
+        <div class="form-group">
+            <label for="personal_effects_value">Personal Effects Value (£ or €)</label>
+            <input type="number" id="personal_effects_value" name="personal_effects_value" required>
+        </div>
+
+        <!-- Total Engine Value -->
+        <div class="form-group">
+            <label for="total_engine_value">Total Engine Value (£ or €)</label>
+            <input type="number" id="total_engine_value" name="total_engine_value" required>
+        </div>
+
+        <!-- Total Insured Value (Auto Calculated) -->
+        <div class="form-group">
+            <label for="total_insured_value">Total Insured Value (£ or €)</label>
+            <input type="number" id="total_insured_value" name="total_insured_value" readonly>
+        </div>
+
+        <!-- Buttons -->
+        <button type="submit" class="next-button">Next</button>
+        <a href="/engine_details"><button type="button">Back</button></a>
+    </form>
+</div>
+
+<script>
+    function calculateTotalInsuredValue() {
+        let hullValue = parseFloat(document.getElementById('hull_value').value) || 0;
+        let effectsValue = parseFloat(document.getElementById('personal_effects_value').value) || 0;
+        let engineValue = parseFloat(document.getElementById('total_engine_value').value) || 0;
+        let totalValue = hullValue + effectsValue + engineValue;
+
+        // Set the total insured value in the form
+        document.getElementById('total_insured_value').value = totalValue.toFixed(2);
+    }
+</script>
+
+</body>
+</html>
+

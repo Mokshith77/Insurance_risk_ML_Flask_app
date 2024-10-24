@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Score</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .result-container {
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .result-label {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .result-value {
+            font-size: 28px;
+            color: #3498db;
+            margin-bottom: 30px;
+        }
+        button {
+            padding: 15px 25px;
+            font-size: 18px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Risk Score</h1>
+
+<div class="result-container">
+    <!-- Risk Score -->
+    <div class="result-label">Calculated Risk Score:</div>
+    <div class="result-value">{{ risk_score }}</div>
+
+    <!-- Insurance Quote -->
+    <div class="result-label">Your Insurance Quote:</div>
+    <div class="result-value">£{{ quote }}</div>
+
+    <!-- Back to start button -->
+    <a href="/"><button type="button">Start Over</button></a>
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engine Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .form-container {
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+        input[type="number"], select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            outline: none;
+        }
+        button {
+            padding: 15px 25px;
+            font-size: 18px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Engine Details</h1>
+
+<div class="form-container">
+    <form action="/total_value" method="POST" oninput="calculateTotalEnginePower()">
+        
+        <!-- Engine Type -->
+        <div class="form-group">
+            <label for="engine_type">Type of Engine</label>
+            <select id="engine_type" name="engine_type" required>
+                <option value="">Select Engine Type</option>
+                <option value="Inboard">Inboard</option>
+                <option value="Outboard">Outboard</option>
+                <option value="No Motor">No Motor</option>
+            </select>
+        </div>
+
+        <!-- Number of Engines -->
+        <div class="form-group">
+            <label for="number_of_engines">Number of Engines</label>
+            <input type="number" id="number_of_engines" name="number_of_engines" min="1" required>
+        </div>
+
+        <!-- Fuel Type -->
+        <div class="form-group">
+            <label for="fuel_type">Fuel Type</label>
+            <select id="fuel_type" name="fuel_type" required>
+                <option value="">Select Fuel Type</option>
+                <option value="Diesel">Diesel</option>
+                <option value="Petrol">Petrol</option>
+                <option value="Gas">Gas</option>
+            </select>
+        </div>
+
+        <!-- Engine Manufacturer -->
+        <div class="form-group">
+            <label for="engine_manufacturer">Engine Manufacturer</label>
+            <select id="engine_manufacturer" name="engine_manufacturer" required>
+                <option value="">Select Manufacturer</option>
+                <option value="Honda">Honda</option>
+                <option value="Toyota Marine">Toyota Marine</option>
+                <option value="STX Engine">STX Engine</option>
+                <option value="Yanmar">Yanmar</option>
+                <option value="MerCruiser">MerCruiser</option>
+            </select>
+        </div>
+
+        <!-- Per Engine Power -->
+        <div class="form-group">
+            <label for="engine_power">Per Engine Power (HP)</label>
+            <input type="number" id="engine_power" name="engine_power" required>
+        </div>
+
+        <!-- Total Engine Power (Hidden field) -->
+        <input type="hidden" id="total_engine_power" name="total_engine_power">
+
+        <!-- Display calculated total engine power -->
+        <div class="form-group">
+            <label for="calculated_total_engine_power">Total Power of Engines (HP): </label>
+            <span id="calculated_total_engine_power">0</span>
+        </div>
+
+        <!-- Safety Features -->
+        <div class="form-group">
+            <label for="safety_features">Does the boat have an automatic fire fighting system within the engine space?</label>
+            <select id="safety_features" name="safety_features" required>
+                <option value="">Select Yes or No</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <!-- Buttons -->
+        <button type="submit" class="next-button">Next</button>
+        <a href="/vessel_details"><button type="button">Back</button></a>
+    </form>
+</div>
+
+<script>
+    function calculateTotalEnginePower() {
+        let numberOfEngines = document.getElementById('number_of_engines').value || 0;
+        let enginePower = document.getElementById('engine_power').value || 0;
+        let totalPower = numberOfEngines * enginePower;
+        
+        // Display calculated total power
+        document.getElementById('calculated_total_engine_power').textContent = totalPower;
+
+        // Set the value in the hidden input field
+        document.getElementById('total_engine_power').value = totalPower;
+    }
+</script>
+
+</body>
+</html>
+
+

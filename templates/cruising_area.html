@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cruising Area</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .form-container {
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        button {
+            padding: 15px 25px;
+            font-size: 18px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Cruising Area</h1>
+
+<div class="form-container">
+    <form action="/results" method="POST">
+        <!-- Country of Residence -->
+        <div class="form-group">
+            <label for="country_of_residence">Country of Residence</label>
+            <select id="country_of_residence" name="country_of_residence" required>
+                <option value="">Select Country</option>
+                <option value="UK">United Kingdom</option>
+                <option value="France">France</option>
+                <option value="Germany">Germany</option>
+                <option value="Italy">Italy</option>
+                <option value="Spain">Spain</option>
+                <option value="Norway">Norway</option>
+                <option value="Sweden">Sweden</option>
+                <option value="Netherlands">Netherlands</option>
+                <option value="Denmark">Denmark</option>
+                <option value="Finland">Finland</option>
+            </select>
+        </div>
+
+        <!-- Registered Country -->
+        <div class="form-group">
+            <label for="registered_country">Registered Country</label>
+            <select id="registered_country" name="registered_country" required>
+                <option value="">Select Country</option>
+                <option value="UK">United Kingdom</option>
+                <option value="France">France</option>
+                <option value="Germany">Germany</option>
+                <option value="Italy">Italy</option>
+                <option value="Spain">Spain</option>
+                <option value="Norway">Norway</option>
+                <option value="Sweden">Sweden</option>
+                <option value="Netherlands">Netherlands</option>
+                <option value="Denmark">Denmark</option>
+                <option value="Finland">Finland</option>
+            </select>
+        </div>
+
+        <!-- Usage -->
+        <div class="form-group">
+            <label for="usage">Usage</label>
+            <select id="usage" name="usage" required>
+                <option value="">Select Usage</option>
+                <option value="Private">Private Use Only</option>
+                <option value="Bareboat">Bareboat Charter</option>
+                <option value="Skippered">Skipper Charter</option>
+                <option value="Commercial">Other Commercial Use</option>
+            </select>
+        </div>
+
+        <!-- Type of Summer Mooring -->
+        <div class="form-group">
+            <label for="summer_mooring">Type of Summer Mooring</label>
+            <select id="summer_mooring" name="summer_mooring" required>
+                <option value="">Select Type</option>
+                <option value="Marina Berth">Marina Berth</option>
+                <option value="Swing Mooring">Swing Mooring</option>
+                <option value="On Trailer">On Trailer</option>
+                <option value="Cruising">Cruising</option>
+                <option value="Ashore">Ashore</option>
+            </select>
+        </div>
+
+        <!-- Type of Winter Mooring -->
+        <div class="form-group">
+            <label for="winter_mooring">Type of Winter Mooring</label>
+            <select id="winter_mooring" name="winter_mooring" required>
+                <option value="">Select Type</option>
+                <option value="Marina Berth">Marina Berth</option>
+                <option value="Swing Mooring">Swing Mooring</option>
+                <option value="On Trailer">On Trailer</option>
+                <option value="Cruising">Cruising</option>
+                <option value="Ashore">Ashore</option>
+            </select>
+        </div>
+
+        <!-- Cruising Areas (Checkboxes) -->
+        <div class="form-group">
+            <label for="cruising_areas">Cruising Areas (Select multiple)</label>
+            <div>
+                <input type="checkbox" id="inland_europe" name="cruising_areas" value="Inland Europe"> Inland Europe<br>
+                <input type="checkbox" id="europe_coastal" name="cruising_areas" value="Europe Coastal"> Europe Coastal<br>
+                <input type="checkbox" id="northern_europe" name="cruising_areas" value="Northern Europe"> Northern Europe<br>
+                <input type="checkbox" id="mediterranean_sea" name="cruising_areas" value="Mediterranean Sea"> Mediterranean Sea<br>
+                <input type="checkbox" id="north_norway" name="cruising_areas" value="North Norway"> North Norway<br>
+                <input type="checkbox" id="greenland" name="cruising_areas" value="Greenland"> Greenland<br>
+                <input type="checkbox" id="northern_north_atlantic" name="cruising_areas" value="Northern North Atlantic"> Northern North Atlantic<br>
+            </div>
+        </div>
+
+        <!-- Boating Experience -->
+        <div class="form-group">
+            <label for="years_boating_experience">How many years have you been boating?</label>
+            <select id="boating_experience" name="boating_experience" required>
+                <option value="">Select Experience</option>
+                <option value="Less than 1 year">Less than 1 year</option>
+                <option value="1 year">1 year</option>
+                <option value="2 years">2 years</option>
+                <option value="3 years">3 years</option>
+                <option value="4 years">4 years</option>
+                <option value="5 years">5 years</option>
+                <option value="More than 5 years">More than 5 years</option>
+            </select>
+        </div>
+
+        <!-- Mileage Experience -->
+        <div class="form-group">
+            <label for="mileage_experience">Mileage Experience</label>
+            <select id="mileage_experience" name="mileage_experience" required>
+                <option value="">Select Mileage</option>
+                <option value="Less than 500 nautical miles">Less than 500 nautical miles</option>
+                <option value="501 to 1000 nautical miles">501 to 1000 nautical miles</option>
+                <option value="1001 to 5000 nautical miles">1001 to 5000 nautical miles</option>
+                <option value="Over 5000 nautical miles">Over 5000 nautical miles</option>
+            </select>
+        </div>
+
+        <!-- Buttons -->
+        <button type="submit">Next</button>
+        <a href="/total_value"><button type="button">Back</button></a>
+    </form>
+</div>
+
+</body>
+</html>
+

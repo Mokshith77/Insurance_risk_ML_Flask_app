@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vessel Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .form-container {
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+        input[type="number"], select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            outline: none;
+        }
+        button {
+            padding: 15px 25px;
+            font-size: 18px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Vessel Details</h1>
+
+<div class="form-container">
+    <form action="/engine_details" method="POST">
+        
+        <!-- Displacement -->
+        <div class="form-group">
+            <label for="displacement">Displacement (tonnes)</label>
+            <input type="number" id="displacement" name="displacement" required>
+        </div>
+
+        <!-- Length Overall -->
+        <div class="form-group">
+            <label for="length_overall">Length Overall (meters)</label>
+            <input type="number" id="length_overall" name="length_overall" required>
+        </div>
+
+        <!-- Beam -->
+        <div class="form-group">
+            <label for="beam">Beam (meters)</label>
+            <input type="number" id="beam" name="beam" required>
+        </div>
+
+        <!-- Hull Material -->
+        <div class="form-group">
+            <label for="hull_material">Hull Material</label>
+            <select id="hull_material" name="hull_material" required>
+                <option value="">Select Hull Material</option>
+                <option value="Steel">Steel</option>
+                <option value="Aluminum">Aluminum</option>
+                <option value="Composite">Composite</option>
+                <option value="Wood">Wood</option>
+                <option value="Fiberglass">Fiberglass</option>
+            </select>
+        </div>
+
+        <!-- Maintenance Frequency -->
+        <div class="form-group">
+            <label for="maintenance_frequency">How many times has the boat been serviced in the last year?</label>
+            <input type="number" id="maintenance_frequency" name="maintenance_frequency" min="0" required>
+        </div>
+
+        <!-- Buttons -->
+        <button type="submit" class="next-button">Next</button>
+        <a href="/"><button type="button">Back</button></a>
+    </form>
+</div>
+
+</body>
+</html>
+
+
